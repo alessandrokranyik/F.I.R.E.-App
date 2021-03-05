@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>F.I.R.E. - Deine Unabhängigkeit</title>
 
-    <link rel="stylesheet" href="/style.css">
-    <link rel="scripts" href="/scripts.js">
-</head>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="scripts" href="/scripts.js" />
+  </head>
 
-<body>
-<div id="won">
-    <h1>F.I.R.E. - Rechner</h1>
-    <br>
-    <form action="">
+  <body>
+    <div id="won">
+      <h1>F.I.R.E. - Rechner</h1>
+      <br />
+      <form action="">
         <div class="container">
-            <label for="ausgaben">jährliche Ausgaben:</label>
-            <input type="text" class="text" name="ausgaben" id="ausgaben">
+          <label for="ausgaben">jährliche Ausgaben:</label>
+          <input type="text" class="text" name="ausgaben" id="ausgaben" />
         </div>
         <div class="container">
-            <label for="anlagen">jährliche Anlagen:</label>
-            <input type="text" class="text" name="anlagen" id="anlagen">
+          <label for="anlagen">jährliche Anlagen:</label>
+          <input type="text" class="text" name="anlagen" id="anlagen" />
         </div>
         <div class="container">
-            <label for="alter">Alter:</label>
-            <input type="text" class="text" name="alter" id="alter">
+          <label for="alter">Alter:</label>
+          <input type="text" class="text" name="alter" id="alter" />
         </div>
         <div class="container">
-            <label for="fire">F.I.R.E.-Alter:</label>
-            <input type="text" class="text" name="fire" id="fire">
+          <label for="fire">F.I.R.E.-Alter:</label>
+          <input type="text" class="text" name="fire" id="fire" />
         </div>
         <div class="container">
-            <label for="fire">jährlich erwarteter Zinseszins-Effekt:</label>
-            <input type="text" class="text" name="fire" id="compoundeffect">
+          <label for="fire">jährlich erwarteter Zinseszins-Effekt:</label>
+          <input type="text" class="text" name="fire" id="compoundeffect" />
         </div>
         <div class="container">
-            <label for="fire">jährliche Auszahlungsrate:</label>
-            <input type="text" class="text" name="fire" id="payoutrate">
+          <label for="fire">jährliche Auszahlungsrate:</label>
+          <input type="text" class="text" name="fire" id="payoutrate" />
         </div>
 
         <button type="button" id="berechnen" onclick="">Berechnen</button>
-        <button type="button" id="zuwachs" onclick="zuwachsBerechnen()">Zuwachs Berechnen</button>
         <p id="p01"></p>
         <p id="p02"></p>
         <p id="p03"></p>
-    </form>
-</div>
-<script src="/scripts.js"></script>
-</body>
+      </form>
+    </div>
+    <script src="/scripts.js"></script>
+  </body>
 </html>

@@ -1,18 +1,18 @@
 * {
-    box-sizing:border-box;
-    font-family: arial;
+  box-sizing: border-box;
+  font-family: arial;
 }
 body {
-    margin:0;
+  margin: 0;
 }
 
 #won {
-    padding: 30px;
+  padding: 30px;
 }
 
 .container {
-    margin: 15px 0px;   
+  margin: 15px 0px;
 }
 .container input {
-    display: block;
+  display: block;
 }
