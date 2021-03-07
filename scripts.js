@@ -67,4 +67,46 @@ function zuwachsBerechnen() {
     kontostand.toFixed(2) +
     "€";
   dauerErgebnis.innerHTML = ergebnis;
+
+  //Chart
+  // dauer = dauer;
+  let arraytest = ["apples", "cherries", "pie", "cake", "kuchen"];
+  
+  const lineChart = document.getElementById("myChart");
+  
+
+  dauerTeiler = dauer/10;
+
+  let myChart = new Chart(lineChart, {
+    type: "line",
+    data: {
+      labels: [0, (dauerTeiler*2).toFixed(1) , (dauerTeiler*3).toFixed(1), (dauerTeiler*4).toFixed(1), (dauerTeiler*5).toFixed(1), (dauerTeiler*6).toFixed(1), (dauerTeiler*7).toFixed(1), (dauerTeiler*8).toFixed(1), dauer],
+      datasets: [
+        {
+          label: "/> Kapital",
+          data: [anfangskapital, 100000, 200000, 300000, 400000, 500000, 600000, 800000, kontostand],
+          backgroundColor: ["rgb(153, 204, 255, .2)"],
+          borderColor: [
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {},
+  });
+for (let i = 0; i < arraytest.length; i++) {
+    myChart.data.labels[i] = arraytest[i];
+    console.log(myChart.data.labels);
+  }
+  console.log(myChart.data.labels[0]);
+  myChart.data.labels[0] = arraytest[2];
+  console.log(myChart.data.labels[0]);
+
+  
 }
