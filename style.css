@@ -16,3 +16,16 @@ body {
 .container input {
   display: block;
 }
+
+.flex {
+  display: flex;
+}
+
+div.left {
+  width: 50%;
+  
+}
+div.right {
+  width: 50%;
+}
+

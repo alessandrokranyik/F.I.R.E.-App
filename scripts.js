@@ -16,23 +16,32 @@ function zuwachsBerechnen() {
   //Benutzer Eingabe {Startkapital, Zinssatz}
   anfangskapital = document.querySelector("#anlagen").value;
   zinssatz = document.querySelector("#compoundeffect").value;
-  anfangskapital = parseInt(anfangskapital, 10);
-  zinssatz = parseInt(zinssatz, 10);
-
-  //Benutzer Eingabe {Ausgaben}, Berechnung benötigten Kapitals & Dauer
   ausgaben = document.getElementById("ausgaben").value;
-  noetigeskapital = ausgaben * 30;
-  dauer = noetigeskapital / anfangskapital;
-  kontostand = anfangskapital;
-  laufzeit = dauer;
-
   kapitalErgebnis = document.getElementById("p01");
+  dauerErgebnis = document.getElementById("p02");
+
+  if (ausgaben == "") {
+    kapitalErgebnis.innerHTML = "jährliche Ausgaben fehlen!";
+    throw console.error("Ausgaben fehlen!");
+  } else if (anfangskapital == "") {
+    kapitalErgebnis.innerHTML = "jährliche Anlagen fehlen!";
+    throw console.error("Anlagen fehlen!");
+  }
+
+  anfangskapital = parseInt(anfangskapital, 10);
   noetigeskapital = ausgaben * 30;
   nachricht =
     "Ihr nötiges Kapital für F.I.R.E. beträgt: " + noetigeskapital + "€.";
   kapitalErgebnis.innerHTML = nachricht;
-
+  if (zinssatz == "") {
+    dauerErgebnis.innerHTML = "Zinssatz fehlt!";
+    throw console.error("Zinssatz fehlt!");
+  }
   //Zinseszins-berechnung
+  dauer = noetigeskapital / anfangskapital;
+  kontostand = anfangskapital;
+  laufzeit = dauer;
+
   for (jahr = 1; jahr < laufzeit; jahr++) {
     var zinsen;
     zinsen = (kontostand * zinssatz) / 100;
@@ -45,24 +54,17 @@ function zuwachsBerechnen() {
     console.log("Konto:" + kontostand.toFixed(0) + "€");
     console.log("");
     if (kontostand > noetigeskapital) {
-      console.log(jahr);
       dauer = jahr;
-      console.log(dauer);
       break;
     }
   }
-  // Ergebnis Ausgabe
-  if (zinssatz != undefined) {
-    dauerErgebnis = document.getElementById("p02");
-    ergebnis =
-      "In " +
-      dauer +
-      " Jahren sind sie am Ziel. Ihr Kontostand beträgt dann: " +
-      kontostand.toFixed(2) +
-      "€";
-    dauerErgebnis.innerHTML = ergebnis;
-    // var int = parseInt(kontostand);
-    // console.log(int);
-  }
-  console.log(dauer * 2);
+
+  //Ergebnis Ausgabe
+  ergebnis =
+    "In " +
+    dauer +
+    " Jahren sind sie am Ziel. <br> Ihr Kontostand beträgt dann: " +
+    kontostand.toFixed(2) +
+    "€";
+  dauerErgebnis.innerHTML = ergebnis;
 }
