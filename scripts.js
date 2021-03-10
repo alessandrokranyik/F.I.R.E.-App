@@ -2,7 +2,15 @@
 const berechnenButton = document.getElementById("berechnen");
 berechnenButton.addEventListener("click", zuwachsBerechnen);
 
+function deleteGraph() {
+  let myChart = document.querySelector('#myChart');
+  
+
+}
+
+
 function zuwachsBerechnen() {
+  // deleteGraph();
   var anfangskapital = 0,
     zinssatz = 0,
     ausgaben = 0,
@@ -39,25 +47,34 @@ function zuwachsBerechnen() {
   }
   //Zinseszins-berechnung
   dauer = noetigeskapital / anfangskapital;
-  kontostand = anfangskapital;
   laufzeit = dauer;
+  kontostand = anfangskapital;
+  console.log("Jahr 0.");
+  console.log("Konto: " + kontostand.toFixed(0) + "€");
+
+  let guthabenArray = [kontostand];
+  let jahreArray = [0];
 
   for (jahr = 1; jahr < laufzeit; jahr++) {
     var zinsen;
     zinsen = (kontostand * zinssatz) / 100;
     kontostand = kontostand + zinsen;
     kontostand += anfangskapital;
+    guthabenArray[jahr] = kontostand;
+    jahreArray[jahr] = jahr;
 
     console.log("Jahr " + jahr + ".");
-    console.log("Zinsen:" + zinsen.toFixed(0) + "€");
+    console.log("Zinsen: " + zinsen.toFixed(0) + "€");
     console.log("+ " + anfangskapital + "€");
-    console.log("Konto:" + kontostand.toFixed(0) + "€");
+    console.log("Konto " + kontostand.toFixed(0) + "€");
     console.log("");
     if (kontostand > noetigeskapital) {
       dauer = jahr;
       break;
     }
   }
+  console.log(guthabenArray);
+  console.log(jahreArray);
 
   //Ergebnis Ausgabe
   ergebnis =
@@ -69,30 +86,50 @@ function zuwachsBerechnen() {
   dauerErgebnis.innerHTML = ergebnis;
 
   //Chart
-  // dauer = dauer;
-  let arraytest = ["apples", "cherries", "pie", "cake", "kuchen"];
-  
+
   const lineChart = document.getElementById("myChart");
-  
 
-  dauerTeiler = dauer/10;
-
+  dauerTeiler = dauer / 10;
   let myChart = new Chart(lineChart, {
     type: "line",
     data: {
-      labels: [0, (dauerTeiler*2).toFixed(1) , (dauerTeiler*3).toFixed(1), (dauerTeiler*4).toFixed(1), (dauerTeiler*5).toFixed(1), (dauerTeiler*6).toFixed(1), (dauerTeiler*7).toFixed(1), (dauerTeiler*8).toFixed(1), dauer],
+      labels: [
+        dauer - dauer,
+        (dauerTeiler * 2).toFixed(1),
+        (dauerTeiler * 3).toFixed(1),
+        (dauerTeiler * 4).toFixed(1),
+        (dauerTeiler * 5).toFixed(1),
+        (dauerTeiler * 6).toFixed(1),
+        (dauerTeiler * 7).toFixed(1),
+        (dauerTeiler * 8).toFixed(1),
+        dauer,
+      ],
       datasets: [
         {
           label: "/> Kapital",
-          data: [anfangskapital, 100000, 200000, 300000, 400000, 500000, 600000, 800000, kontostand],
-          backgroundColor: ["rgb(153, 204, 255, .2)"],
+          data: [
+            anfangskapital,
+            guthabenArray[1],
+            guthabenArray[2],
+            guthabenArray[3],
+            guthabenArray[4],
+            guthabenArray[5],
+            guthabenArray[6],
+            guthabenArray[7],
+            kontostand,
+          ],
+          backgroundColor: ["rgb(153, 204, 255, .4)"],
           borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
+            "rgba(255, 128, 0, .8)",
+            "rgba(255, 128, 0, 1)",
+            "rgba(255, 128, 0, 1)",
+            "rgba(255, 128, 0, 1)",
+            "rgba(255, 128, 0, 1)",
+            "rgba(255, 128, 0, 1)",
+            "rgba(255, 128, 0, 1)",
+            "rgba(255, 128, 0, 1)",
+
+            "rgba(0, 0, 255, 1)",
           ],
           borderWidth: 1,
         },
@@ -100,13 +137,5 @@ function zuwachsBerechnen() {
     },
     options: {},
   });
-for (let i = 0; i < arraytest.length; i++) {
-    myChart.data.labels[i] = arraytest[i];
-    console.log(myChart.data.labels);
-  }
-  console.log(myChart.data.labels[0]);
-  myChart.data.labels[0] = arraytest[2];
-  console.log(myChart.data.labels[0]);
-
-  
+  //   console.log(myChart.data.labels[0]);
 }
