@@ -3,14 +3,10 @@ const berechnenButton = document.getElementById("berechnen");
 berechnenButton.addEventListener("click", zuwachsBerechnen);
 
 function deleteGraph() {
-  let myChart = document.querySelector('#myChart');
-  
-
+  let myChart = document.querySelector("#myChart");
 }
 
-
 function zuwachsBerechnen() {
-  // deleteGraph();
   var anfangskapital = 0,
     zinssatz = 0,
     ausgaben = 0,
@@ -45,6 +41,7 @@ function zuwachsBerechnen() {
     dauerErgebnis.innerHTML = "Zinssatz fehlt!";
     throw console.error("Zinssatz fehlt!");
   }
+  
   //Zinseszins-berechnung
   dauer = noetigeskapital / anfangskapital;
   laufzeit = dauer;
@@ -86,38 +83,21 @@ function zuwachsBerechnen() {
   dauerErgebnis.innerHTML = ergebnis;
 
   //Chart
+  let colorArray = [];
+  for (i = 0; i < dauer; i++) {
+    colorArray[i] = "rgba(255, 128, 0, 1)";
+  }
 
   const lineChart = document.getElementById("myChart");
-
   dauerTeiler = dauer / 10;
   let myChart = new Chart(lineChart, {
     type: "line",
     data: {
-      labels: [
-        dauer - dauer,
-        (dauerTeiler * 2).toFixed(1),
-        (dauerTeiler * 3).toFixed(1),
-        (dauerTeiler * 4).toFixed(1),
-        (dauerTeiler * 5).toFixed(1),
-        (dauerTeiler * 6).toFixed(1),
-        (dauerTeiler * 7).toFixed(1),
-        (dauerTeiler * 8).toFixed(1),
-        dauer,
-      ],
+      labels: [],
       datasets: [
         {
           label: "/> Kapital",
-          data: [
-            anfangskapital,
-            guthabenArray[1],
-            guthabenArray[2],
-            guthabenArray[3],
-            guthabenArray[4],
-            guthabenArray[5],
-            guthabenArray[6],
-            guthabenArray[7],
-            kontostand,
-          ],
+          data: [],
           backgroundColor: ["rgb(153, 204, 255, .4)"],
           borderColor: [
             "rgba(255, 128, 0, .8)",
@@ -137,5 +117,23 @@ function zuwachsBerechnen() {
     },
     options: {},
   });
-  //   console.log(myChart.data.labels[0]);
+
+  addData(myChart);
+  function addData(chart) {
+    for (i = 0; i < jahreArray.length; i++) {
+      chart.data.labels.push(jahreArray[i]);
+    }
+    chart.data.datasets.forEach((dataset) => {
+      for (i = 0; i < guthabenArray.length; i++) {
+        dataset.data.push(guthabenArray[i]);
+      }
+    });
+    chart.data.datasets.forEach((dataset) => {
+      for (i = 0; i < colorArray.length; i++) {
+        dataset.borderColor.push(colorArray[i]);
+      }
+    });
+
+    chart.update();
+  }
 }
