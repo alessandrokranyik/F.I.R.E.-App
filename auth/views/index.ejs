@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F.I.R.E. - Deine Unabhängigkeit</title>
+
+    <link rel="stylesheet" href="/public/style.css" />
+    <link rel="scripts" href="/public/scripts.js" />
+  </head>
+
+  <body>
+    <div id="won">
+      <h1>F.I.R.E. - Rechner</h1>
+      <br />
+      <form action="">
+        <div class="flex">
+          <div class="left">
+            <div class="container">
+              <label for="ausgaben">jährliche Ausgaben:</label>
+              <input type="text" class="text" name="ausgaben" id="ausgaben" />
+            </div>
+            <div class="container">
+              <label for="anlagen">jährliche Anlagen:</label>
+              <input type="text" class="text" name="anlagen" id="anlagen" />
+            </div>
+            <div class="container">
+              <label for="fire">jährlicher Zinseszins:</label>
+              <input type="text" class="text" name="fire" id="compoundeffect" />
+            </div>
+          </div>
+          <div class="right">
+          </div>
+        </div>
+        <div class="btn-container">
+        <button type="button" id="berechnen" onclick="">Berechnen</button>
+        <button type="button" id="chartdel-btn" onclick="">Chart löschen</button>
+      </div>
+        <p id="p01"></p>
+        <p id="p02"></p>
+        <p id="p03"></p>
+      </form>
+    </div>
+    <div class="chart-container">
+      <!-- <canvas id="myChart" width="200px" height="100px"></canvas> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="/public/scripts.js"></script>
+  </body>
+</html>
