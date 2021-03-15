@@ -2,8 +2,12 @@
 const berechnenButton = document.getElementById("berechnen");
 berechnenButton.addEventListener("click", zuwachsBerechnen);
 
-function deleteGraph() {
-  let myChart = document.querySelector("#myChart");
+const chartdelButton = document.querySelector("#chartdel-btn");
+chartdelButton.addEventListener("click", chartLoeschen);
+
+function chartLoeschen() {
+  let canvas = document.querySelector("#myChart");
+  canvas.remove();
 }
 
 function zuwachsBerechnen() {
@@ -41,7 +45,7 @@ function zuwachsBerechnen() {
     dauerErgebnis.innerHTML = "Zinssatz fehlt!";
     throw console.error("Zinssatz fehlt!");
   }
-  
+
   //Zinseszins-berechnung
   dauer = noetigeskapital / anfangskapital;
   laufzeit = dauer;
@@ -83,10 +87,13 @@ function zuwachsBerechnen() {
   dauerErgebnis.innerHTML = ergebnis;
 
   //Chart
-  let colorArray = [];
-  for (i = 0; i < dauer; i++) {
-    colorArray[i] = "rgba(255, 128, 0, 1)";
-  }
+  const chartcontainer = document.querySelector(".chart-container");
+  let newCanvas = document.createElement("canvas");
+  newCanvas.setAttribute("id", "myChart");
+  newCanvas.setAttribute("width", "200px");
+  newCanvas.setAttribute("height", "100px");
+  console.log(chartcontainer.hasChildNodes());
+  chartcontainer.appendChild(newCanvas);
 
   const lineChart = document.getElementById("myChart");
   dauerTeiler = dauer / 10;
@@ -117,6 +124,11 @@ function zuwachsBerechnen() {
     },
     options: {},
   });
+
+  let colorArray = [];
+  for (i = 0; i < dauer; i++) {
+    colorArray[i] = "rgba(255, 128, 0, 1)";
+  }
 
   addData(myChart);
   function addData(chart) {

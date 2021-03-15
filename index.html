@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>F.I.R.E. - Deine Unabhängigkeit</title>
 
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="scripts" href="/scripts.js" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link rel="scripts" href="scripts.js" />
   </head>
 
   <body>
@@ -33,14 +33,17 @@
           <div class="right">
           </div>
         </div>
+        <div class="btn-container">
         <button type="button" id="berechnen" onclick="">Berechnen</button>
+        <button type="button" id="chartdel-btn" onclick="">Chart löschen</button>
+      </div>
         <p id="p01"></p>
         <p id="p02"></p>
         <p id="p03"></p>
       </form>
     </div>
     <div class="chart-container">
-      <canvas id="myChart" width="200px" height="100px"></canvas>
+      <!-- <canvas id="myChart" width="200px" height="100px"></canvas> -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="/scripts.js"></script>
